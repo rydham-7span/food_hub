@@ -50,6 +50,10 @@ class App extends StatelessWidget {
                 locale: context.locale,
                 debugShowCheckedModeBanner: false,
                 theme: ThemeData(
+                  fontFamilyFallback: const [
+                    AppUtils.sofiaSansFont,
+                  ],
+                  fontFamily: AppUtils.sofiaSansFont,
                   splashFactory: InkRipple.splashFactory,
                   textSelectionTheme: TextSelectionThemeData(
                     selectionHandleColor: context.colorScheme.blackColor,

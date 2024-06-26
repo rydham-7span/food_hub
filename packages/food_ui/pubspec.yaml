@@ -70,9 +70,9 @@ flutter:
   fonts:
     - family: SofiaSans
       fonts:
-        - asset: assets/fonts/SofiaSans-Bold.ttf
-          weight: 700
-        - asset: assets/fonts/SofiaSans-Medium.ttf
-          weight: 500
         - asset: assets/fonts/SofiaSans-Regular.ttf
           weight: 400
+        - asset: assets/fonts/SofiaSans-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/SofiaSans-Bold.ttf
+          weight: 700

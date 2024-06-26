@@ -43,18 +43,19 @@ class _SplashScreenState extends State<SplashScreen> {
             child: Padding(
               padding: const EdgeInsets.all(20),
               child: Assets.icons.iconSvg.svg(
-                height: 100,
-                width: 100,
+                height: 110,
+                width: 110,
                 color: context.colorScheme.mainThemeColor,
               ),
             ),
           ),
           Padding(
             padding: const EdgeInsets.all(10),
-            child: Text(
-              LocaleKeys.food_hub.tr(),
-              style:
-                  const TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 45),
+            child: AppText(
+              LocaleKeys.food_hub.tr().toUpperCase(),
+              fontSize: 50,
+              color: Colors.white,
+              fontWeight: FontWeight.w900,
             ),
           ),
         ],

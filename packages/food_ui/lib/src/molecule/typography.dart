@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/widgets.dart';
+import 'package:food_ui/food_ui.dart';
 
 class AppTypographyData extends Equatable {
   const AppTypographyData({
@@ -11,13 +12,13 @@ class AppTypographyData extends Equatable {
         title: TextStyle(
           fontSize: 22,
           fontWeight: FontWeight.w700,
-          fontFamily: 'Inter',
-          package: packageName,
+          fontFamily: AppUtils.sofiaSansFont,
+          // package: packageName,
         ),
         paragraph: TextStyle(
           fontSize: 20,
-          fontFamily: 'Inter',
-          package: packageName,
+          fontFamily: AppUtils.sofiaSansFont,
+          // package: packageName,
         ),
       );
 
