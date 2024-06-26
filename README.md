@@ -1,4 +1,4 @@
-## EventMania BoxOffice
+## FoodHub
 
 1. Activate melos:
 `dart pub global activate melos`
@@ -18,9 +18,7 @@
 6. Use this extension to use colors in App
 `context.colorScheme`
 
-7. Chart implementation must be done with [FL_Chart](https://pub.dev/packages/fl_chart)
-
-8. Widget Components must be created in **food_ui** package
+7. Widget Components must be created in **food_ui** package
 
 
 
