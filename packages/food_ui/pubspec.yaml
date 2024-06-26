@@ -1,0 +1,78 @@
+name: food_ui
+description: "UI for for Event Mania SALES"
+version: 0.0.1
+# homepage:
+
+environment:
+  sdk: ">=3.3.1 <4.0.0"
+  flutter: ">=1.17.0"
+
+dependencies:
+  equatable: ^2.0.5
+  flutter:
+    sdk: flutter
+  intl: ^0.19.0
+  timeago: ^3.6.1
+  flutter_svg: ^2.0.9
+  food_localization: ^1.0.0+1
+  cached_network_image: ^3.3.1
+  jiffy: ^6.2.1
+  percent_indicator: ^4.2.3
+  animated_rotating_widget: ^0.0.2
+  fl_chart: ^0.66.2
+  dropdown_button2: ^2.3.9
+  sprintf: ^7.0.0
+  seatsio: ^0.4.0
+  syncfusion_flutter_charts: ^25.1.38
+  package_info_plus: ^8.0.0
+
+
+
+
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+  very_good_analysis: ^5.1.0
+  build_runner: ^2.4.6
+  logger: ^2.0.2+1
+  flutter_gen: ^5.3.2
+  flutter_gen_runner: ^5.3.2
+
+
+flutter_gen:
+  assets:
+    outputs:
+      package_parameter_enabled: true
+    output: lib/sr
+    line_length: 80
+
+  integrations:
+    flutter_svg: true
+    rive: true
+    lottie: true
+
+# For information on the generic Dart part of this file, see the
+# following page: https://dart.dev/tools/pub/pubspec
+
+# The following section is specific to Flutter packages.
+flutter:
+  assets:
+    - assets/images/
+    - assets/icons/
+    - assets/fonts/
+
+
+
+
+  fonts:
+    - family: SofiaSans
+      fonts:
+        - asset: assets/fonts/SofiaSans-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/SofiaSans-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/SofiaSans-Regular.ttf
+          weight: 400

@@ -1,0 +1,4 @@
+# melos_managed_dependency_overrides: food_localization
+dependency_overrides:
+  food_localization:
+    path: ..\\food_localization

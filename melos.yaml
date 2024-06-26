@@ -1,0 +1,83 @@
+name: food_flutter
+
+packages:
+  - packages/*
+
+scripts:
+  analyze:
+    run: |
+      melos exec -c 5 -- \
+        dart analyze . --fatal-infos
+
+  build-runner:
+    description: Generate environment configuration, assets and other code generation
+    packageFilters:
+      flutter: true
+      dirExists: lib
+      scope: food_app
+    run: melos exec dart run build_runner clean && melos exec dart run build_runner build -d
+
+  assets-runner:
+    description: Generate environment configuration, assets and other code generation
+    packageFilters:
+      flutter: true
+      dirExists: lib
+      scope: food_ui
+    run: melos exec dart run build_runner clean && melos exec dart run build_runner build -d
+
+  locale-gen:
+    description: Generate localization
+    packageFilters:
+      flutter: true
+      dirExists: lib
+      scope: food_localization
+    exec: dart run easy_localization:generate -f keys -o locale_keys.g.dart -O ./lib/gen -S assets/l10n
+
+  build-apk-dev:
+    description: Generate apk with dev environment
+    packageFilters:
+      flutter: true
+      dirExists: lib
+      scope: food_app
+    exec: flutter build apk -t lib/main_development.dart
+
+  build-apk-prod:
+    description: Generate apk with prod environment
+    packageFilters:
+      flutter: true
+      dirExists: lib
+      scope: food_app
+    exec: flutter build apk -t lib/main_production.dart
+
+  clean:
+    description: Run flutter clean
+    packageFilters:
+      flutter: true
+      dirExists: lib
+      scope: food_app
+    exec: flutter clean
+
+  go-ios-go:
+      description: Removes Podfile.lock & Pods Directory & Installs PodFile
+      packageFilters:
+        flutter: true
+        dirExists: lib
+        scope:
+          - food_app
+      exec: cd ios && rm -rf Pods && rm -rf Podfile.lock && pod install --repo-update
+
+  build-aab-dev:
+    description: Builds the Bundle File Development
+    packageFilters:
+      flutter: true
+      dirExists: lib
+      scope: food_app
+    exec: flutter build appbundle -t lib/main_development.dart
+
+  build-aab-prod:
+    description: Builds the Bundle File Production
+    packageFilters:
+      flutter: true
+      dirExists: lib
+      scope: food_app
+    exec: flutter build appbundle -t lib/main_production.dart

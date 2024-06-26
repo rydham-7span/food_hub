@@ -1,0 +1,45 @@
+import 'package:flutter/material.dart';
+
+abstract class AppColors {
+  static const mainThemeColor = Color(0xffFE724C);
+  static const backgroundColorBright = Color(0xffF9FAFB);
+  static const blackColorBright = Color(0xff000000);
+  static const m3White = Color(0xffFFFFFF);
+  static const tertiaryColorBright = Color(0xff5D5F5F);
+  static const outlineColorBright = Color(0xffCFC4C5);
+  static const m3BlackColorBright = Color(0xff4C4546);
+  static const redSecondaryContainerBright = Color(0xffC72E2F);
+  static const m3RedColorBright = Color(0xffBA1A1A);
+  static const searchBackgroundColorBright = Color(0xffFAFAFA);
+  static const greenColorBright = Color(0xff0F9D58);
+  static const neutral500ColorBright = Color(0xff64748B);
+  static const m3GreyColorBright = Color(0xffB1B1B1);
+  static const surfaceTintColorBright = Color(0xff5E5E5E);
+  static const schemesOutlineColorBright = Color(0xff7E7576);
+  static const labelLightSecondaryColorBright = Color(0x993C3C43);
+  static const backgroundLightSecondaryColorBright = Color(0x3C3C4399);
+  static const redLightSecondaryColorBright = Color(0xffFF3B30);
+  static const m3LightSecondaryColorBright = Color(0xff474747);
+  static const successGreenColorBright = Color(0xff33B440);
+  static const m3LightColorBright = Color(0xffF9F9F9);
+  static const lineChartColorBright = Color(0xff357AF6);
+  static const backgroundSecondaryBright = Color(0xffF2F2F7);
+  static const m3LightOnSurface = Color(0xff1B1B1B);
+  static const m3Grey = Color(0xff808080);
+  static const m3Grey100 = Color(0xffD0D1D2);
+  static const m3SvgColorBright = Color(0xff6B7280);
+  static const m3LightPrimaryFixed = Color(0xffE2E2E2);
+  static const actionBlue = Color(0xff007AFF);
+  static const warningTextColor = Color(0xffF63333);
+  static const invalidBottomSheetColor = Color(0xffE33636);
+  static const offlineBorder = Color(0xffFFC554);
+  static const offlineBannerColor = Color(0xffE5B91A);
+  static const primaryBlackColor = Color(0xff1C1C1E);
+  static const warningRedColor = Color(0xffde1738);
+  static const backgroundGreenColor = Color(0xffDAF8E6);
+  static const greenTextColor = Color(0xff22AD5C);
+  static const backgroundRedColor = Color(0xffFEF3F3);
+  static const redTextColor = Color(0xffF23030);
+  static const backgroundWarningColor = Color(0xffFFFBEB);
+  static const yellowTextColor = Color(0xff9D5425);
+}

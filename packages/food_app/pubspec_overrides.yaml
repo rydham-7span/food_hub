@@ -1,0 +1,8 @@
+# melos_managed_dependency_overrides: food_client,food_localization,food_ui
+dependency_overrides:
+  food_client:
+    path: ..\\food_client
+  food_localization:
+    path: ..\\food_localization
+  food_ui:
+    path: ..\\food_ui
