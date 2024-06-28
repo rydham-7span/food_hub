@@ -96,6 +96,7 @@ class ExtensionUtils {
   /// credits to "ReCase" package.
   static final RegExp _upperAlphaRegex = RegExp('[A-Z]');
   static final _symbolSet = {' ', '.', '/', '_', r'\', '-'};
+
   static List<String> _groupIntoWords(String text) {
     final sb = StringBuffer();
     final words = <String>[];
@@ -129,5 +130,25 @@ class ExtensionUtils {
     }
     final list = segments.map((e) => '/$e');
     return path + list.join();
+  }
+
+  static bool isValidEmail(String value) {
+    final emailRegExp = RegExp(r"^[a-zA-Z0-9.]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
+    return emailRegExp.hasMatch(value);
+  }
+
+  static bool isValidName(String value) {
+    final nameRegExp = RegExp(r"^\s*([A-Za-z]{1,}([z\.,] |[-']| ))+[A-Za-z]+\.?\s*$");
+    return nameRegExp.hasMatch(value);
+  }
+
+  static bool isValidPassword(String value) {
+    final passwordRegExp = RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#$&*~]).{6,}$');
+    return passwordRegExp.hasMatch(value);
+  }
+
+  static bool isValidPhone(String value) {
+    final phoneRegExp = RegExp(r"^\+?0[0-9]{10}$");
+    return phoneRegExp.hasMatch(value);
   }
 }

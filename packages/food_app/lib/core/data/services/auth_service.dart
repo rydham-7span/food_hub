@@ -1,6 +1,5 @@
 // import 'package:hive_flutter/hive_flutter.dart';
 // import 'package:qr_code_scanner/qr_code_scanner.dart';
-// import 'package:food_app/app/config/api_config.dart';
 // import 'package:food_app/app/config/app_constants.dart';
 // import 'package:food_app/app/enum.dart';
 // import 'package:food_app/core/domain/failure_impl.dart';

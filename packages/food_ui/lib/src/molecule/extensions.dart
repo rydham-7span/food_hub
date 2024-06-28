@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:food_ui/src/molecule/color_data.dart';
 import 'package:food_ui/src/molecule/extension_utils.dart';
 import 'package:food_ui/src/molecule/theme.dart';
 import 'package:food_ui/src/molecule/typography.dart';
+import 'package:intl/intl.dart';
 import 'package:timeago/timeago.dart' show format;
 
 extension BuildContextX on BuildContext {
@@ -20,15 +20,25 @@ extension BuildContextX on BuildContext {
 
 extension DateTimeX on DateTime {
   String defaultFormat() => DateFormat('MMM dd, yyyy').format(this);
+
   String requestFormat() => DateFormat('yyyy-MM-dd').format(this);
+
   String dayWithMonthFormat() => DateFormat('dd MMM').format(this);
+
   String historyFormat() => DateFormat('E MMM d, y h:mm:ss a').format(this);
+
   String lastValidateFormat() => DateFormat('MMM d, y h:mm:ss a').format(this);
+
   String storageFormat() => DateFormat('dd MMM yyyy hh:mm a').format(this).toUpperCase();
+
   String eventFormat() => DateFormat('EEE · MMM dd').format(this).toUpperCase();
+
   String appBarFormat() => DateFormat('EEE, MMM dd').format(this);
+
   String eventSearchFormat() => DateFormat('MMM dd').format(this);
+
   String startTimeFormat() => DateFormat('h:mm a').format(this).toUpperCase();
+
   int get secondsSinceEpoch => millisecondsSinceEpoch ~/ 1000;
 
   String get ago => format(
@@ -108,4 +118,12 @@ extension AppStringUtils on String {
 
   /// Discover if the String is a valid URL
   String? get paramCase => ExtensionUtils.paramCase(this);
+
+  bool get isValidEmail => ExtensionUtils.isValidEmail(this);
+
+  bool get isValidName => ExtensionUtils.isValidName(this);
+
+  bool get isValidPassword => ExtensionUtils.isValidPassword(this);
+
+  bool get isValidPhone => ExtensionUtils.isValidPhone(this);
 }

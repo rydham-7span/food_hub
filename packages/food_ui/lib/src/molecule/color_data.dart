@@ -5,6 +5,7 @@ import 'package:food_ui/src/atoms/colors.dart';
 
 class AppColorsData {
   const AppColorsData({
+    required this.secondaryThemeColor,
     required this.mainThemeColor,
     required this.blackColor,
     required this.tertiaryColor,
@@ -49,6 +50,7 @@ class AppColorsData {
   });
 
   factory AppColorsData.light() => const AppColorsData(
+        secondaryThemeColor: AppColors.secondaryThemeColor,
         mainThemeColor: AppColors.mainThemeColor,
         backgroundColor: AppColors.backgroundColorBright,
         blackColor: AppColors.blackColorBright,
@@ -93,6 +95,7 @@ class AppColorsData {
       );
 
   final Color mainThemeColor;
+  final Color secondaryThemeColor;
   final Color backgroundColor;
   final Color blackColor;
   final Color m3White;

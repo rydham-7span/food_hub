@@ -71,6 +71,8 @@ enum USER {
 /// Used in state class for emitting the status of the API
 enum ApiStatus { initial, loading, loaded, error }
 
+enum FirebaseStatus { initial, loading, loaded, error }
+
 ///Permissions enum
 enum MediaPermission {
   camera,

@@ -4,3 +4,9 @@ enum RequestType {
   put,
   delete,
 }
+
+enum FBRequestType {
+  get,
+  put,
+  delete,
+}

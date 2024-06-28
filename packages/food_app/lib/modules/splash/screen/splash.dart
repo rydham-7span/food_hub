@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:food_app/app/routes/app_router.dart';
 import 'package:food_localization/food_localization.dart';
 import 'package:food_ui/food_ui.dart';
 
@@ -14,7 +15,7 @@ class SplashScreen extends StatefulWidget /*implements AutoRouteWrapper*/ {
 class _SplashScreenState extends State<SplashScreen> {
   @override
   void didChangeDependencies() {
-    // _decideRoute(context);
+    _decideRoute(context);
     super.didChangeDependencies();
   }
 
@@ -63,31 +64,13 @@ class _SplashScreenState extends State<SplashScreen> {
     );
   }
 
-// Future<u.Unit> _decideRoute(BuildContext context) async {
-//   // final isRememberMe = context.rememberMe;
-//   final router = context.router;
-//   if (router.current.name != ResetPwdDeeplinkRoute.name) {
-//     if (isRememberMe) {
-//       final auth = LocalAuthentication();
-//       final isSupported = await auth.isDeviceSupported();
-//       if (isSupported) {
-//         await router.pushAndPopUntil(
-//           LoginRoute(firstTimeLogin: false),
-//           predicate: (_) => false,
-//         );
-//       } else {
-//         await router.pushAndPopUntil(
-//           const DashboardStatisticsBottomRoute(),
-//           predicate: (_) => false,
-//         );
-//       }
-//     } else {
-//       await router.pushAndPopUntil(
-//         LoginRoute(firstTimeLogin: true),
-//         predicate: (_) => false,
-//       );
-//     }
-//   }
-//   return u.unit;
-// }
+  void _decideRoute(BuildContext context) {
+    final router = context.router;
+    Future.delayed(const Duration(seconds: 1)).then(
+      (value) => router.pushAndPopUntil(
+        const SignupRoute(),
+        predicate: (Route<dynamic> route) => false,
+      ),
+    );
+  }
 }

@@ -1,9 +1,7 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
-import 'package:food_app/app/routes/route_guards/auth_guard.dart';
-import 'package:food_app/app/routes/route_guards/dashboard_guard.dart';
-import 'package:food_app/core/presentation/widgets/image_cropper/custom_image_cropper.dart';
+import 'package:food_app/modules/auth/screens/login_screen.dart';
+import 'package:food_app/modules/auth/screens/signup_screen.dart';
+import 'package:food_app/modules/home/screen/home_screen.dart';
 import 'package:food_app/modules/splash/screen/splash.dart';
 
 part 'app_router.gr.dart';
@@ -13,10 +11,18 @@ part 'app_router.gr.dart';
 class AppRouter extends _$AppRouter {
   @override
   List<AutoRoute> get routes => [
-        // AutoRoute(
-        //   path: '/login',
-        //   page: LoginRoute.page,
-        // ),
+        AutoRoute(
+          path: '/login',
+          page: LoginRoute.page,
+        ),
+        AutoRoute(
+          path: '/signup',
+          page: SignupRoute.page,
+        ),
+        AutoRoute(
+          path: '/home',
+          page: HomeRoute.page,
+        ),
         // AutoRoute(
         //   path: '/update',
         //   page: UpdateRoute.page,

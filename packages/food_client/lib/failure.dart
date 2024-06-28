@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dio/dio.dart';
 import 'package:food_localization/food_localization.dart';
 
@@ -51,6 +52,11 @@ class APIFailure extends Failure {
             }
           }
         }
+      } else if (error! is FirebaseException) {
+        FirebaseException? exception = error! as FirebaseException?;
+        errorMessage = {'message': (exception?.message ?? '')};
+      } else if (error! is SocketException) {
+        return {'no_connection': LocaleKeys.no_connection.tr()};
       }
     }
     return errorMessage ?? {'unknown': LocaleKeys.error.tr()};
