@@ -1,4 +1,6 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -49,8 +51,14 @@ class _SignupScreenState extends State<SignupScreen> {
       body: BlocConsumer<AuthBloc, AuthState>(
         listener: (context, state) {
           if (state.signupStatus == FirebaseStatus.loaded) {
+            FirebaseAuth.instance.currentUser?.uid;
+            final db = FirebaseFirestore.instance;
+            db.collection('user').doc('${FirebaseAuth.instance.currentUser?.uid}').set({
+              'isAdmin': false,
+            });
+
             context.router.pushAndPopUntil(
-              const HomeRoute(),
+              const UserHomeRoute(),
               predicate: (Route<dynamic> route) => false,
             );
           } else if (state.signupStatus == FirebaseStatus.error) {

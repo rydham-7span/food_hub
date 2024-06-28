@@ -49,7 +49,7 @@ class _LoginScreenState extends State<LoginScreen> {
         listener: (context, state) {
           if (state.loginStatus == FirebaseStatus.loaded) {
             context.router.pushAndPopUntil(
-              const HomeRoute(),
+              const UserHomeRoute(),
               predicate: (Route<dynamic> route) => false,
             );
           } else if (state.loginStatus == FirebaseStatus.error) {

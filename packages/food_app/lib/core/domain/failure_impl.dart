@@ -7,6 +7,19 @@ import 'package:food_localization/food_localization.dart';
 ///In case of returning different messages Remove defaultMessage from inner class
 Map<String, String> defaultMessage = {ErrorConstants.unknownErrorKey: LocaleKeys.error.tr()};
 
+class CheckAdminFailure extends Failure {
+  CheckAdminFailure({
+    this.error,
+    this.stackTrace,
+  });
+
+  final Object? error;
+  final StackTrace? stackTrace;
+
+  @override
+  Map<String, String> get message => defaultMessage;
+}
+
 class ModelConversionFailure extends Failure {
   ModelConversionFailure({this.error, this.stackTrace}) {
     log(stackTrace.toString());

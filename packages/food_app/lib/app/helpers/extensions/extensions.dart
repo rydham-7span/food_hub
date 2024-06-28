@@ -10,21 +10,33 @@
 // import 'package:food_app/modules/auth/model/user_model.dart';
 // import 'package:food_app/modules/role/model/permission_model.dart';
 //
-// extension GetUsernameExtension on NavigationResolver {
-//   bool get rememberMe => getIt<IAuthService>().getUserData().fold(
-//         () => false,
-//         (model) => model.first.rememberMe ?? false,
-//       );
+import 'package:auto_route/auto_route.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:food_app/app/helpers/injection.dart';
+import 'package:food_app/core/data/services/auth_service.dart';
+
+extension GetUsernameExtension on NavigationResolver {
+  Future<bool> get isUserAdmin async {
+    final db = FirebaseFirestore.instance;
+    final data = await db.collection('user').doc(FirebaseAuth.instance.currentUser?.uid).get();
+    final isAdmin = data.data()?.values.first as bool;
+    return isAdmin;
+    // return ;
+  }
+
+// bool get isUserAdmin {
+//   TaskEither(_run)
 //
-//   bool get isEventSelected => getIt<IAuthService>().getUserEvent().fold(
-//         () => false,
-//         (model) => model.first.uuid?.isNotEmpty ?? false,
-//       );
-//
-//   bool get isUserExists => getIt<IAuthService>().getUserData().fold(
-//         () => false,
-//         (model) => true,
-//       );
+//   final db = FirebaseFirestore.instance;
+//   final data = await db.collection('user').doc(value).get();
+//   final isAdmin = data.data()?.values.first as bool;
+//   return isAdmin;
+// return getIt<IAuthService>().checkForAdmin(FirebaseAuth.instance.currentUser?.uid ?? '').fold(
+//       () => false,
+//       (model) => true,
+//     );
+}
 // }
 //
 // extension GetCurrentUser on BuildContext {
