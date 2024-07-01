@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:food_app/app/routes/route_guards/login_guard.dart';
 import 'package:food_app/modules/admin/home/screen/admin_home_screen.dart';
 import 'package:food_app/modules/auth/screens/login_screen.dart';
+import 'package:food_app/modules/auth/screens/register_admin_screen.dart';
 import 'package:food_app/modules/auth/screens/signup_screen.dart';
 import 'package:food_app/modules/splash/screen/splash.dart';
 import 'package:food_app/modules/user/home/screen/user_home_screen.dart';
@@ -22,13 +22,17 @@ class AppRouter extends _$AppRouter {
           page: SignupRoute.page,
         ),
         AutoRoute(
+          path: '/registerAdmin',
+          page: RegisterAdminRoute.page,
+        ),
+        AutoRoute(
           path: '/home',
           page: AdminHomeRoute.page,
         ),
         AutoRoute(
           path: '/home',
           page: UserHomeRoute.page,
-          guards: [LoginGuard()],
+          // guards: [LoginGuard()],
         ),
         // AutoRoute(
         //   path: '/update',
