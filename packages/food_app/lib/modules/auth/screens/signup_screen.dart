@@ -1,6 +1,4 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -41,7 +39,7 @@ class _SignupScreenState extends State<SignupScreen> {
   final txtName = TextEditingController();
   final txtEmail = TextEditingController();
   final txtPass = TextEditingController();
-  final userModel = const UserModel();
+  final userModel = UserModel();
   bool isObscure = true;
 
   @override
@@ -51,12 +49,6 @@ class _SignupScreenState extends State<SignupScreen> {
       body: BlocConsumer<AuthBloc, AuthState>(
         listener: (context, state) {
           if (state.signupStatus == FirebaseStatus.loaded) {
-            FirebaseAuth.instance.currentUser?.uid;
-            final db = FirebaseFirestore.instance;
-            db.collection('user').doc('${FirebaseAuth.instance.currentUser?.uid}').set({
-              'isAdmin': false,
-            });
-
             context.router.pushAndPopUntil(
               const UserHomeRoute(),
               predicate: (Route<dynamic> route) => false,
@@ -184,8 +176,9 @@ class _SignupScreenState extends State<SignupScreen> {
                                   SignUpEvent(
                                     userModel: userModel.copyWith(
                                       name: txtName.text,
-                                      email: txtEmail.text,
+                                      email: txtEmail.text.toLowerCase(),
                                       password: txtPass.text,
+                                      isAdmin: false,
                                     ),
                                   ),
                                 );
@@ -220,6 +213,46 @@ class _SignupScreenState extends State<SignupScreen> {
                             },
                             child: AppText(
                               LocaleKeys.login.tr(),
+                              fontSize: 16,
+                              color: context.colorScheme.mainThemeColor,
+                              fontWeight: AppFontWeight.light,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.all(15),
+                    child: Divider(
+                      indent: 40,
+                      endIndent: 40,
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 20),
+                    child: Align(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          AppText(
+                            LocaleKeys.register_admin_txt.tr(),
+                            fontSize: 15,
+                            color: context.colorScheme.m3Grey,
+                            fontWeight: AppFontWeight.light,
+                          ),
+                          const SizedBox(
+                            width: 10,
+                          ),
+                          GestureDetector(
+                            onTap: () {
+                              context.router.push(
+                                const RegisterAdminRoute(),
+                                // predicate: (Route<dynamic> route) => false,
+                              );
+                            },
+                            child: AppText(
+                              LocaleKeys.register.tr(),
                               fontSize: 16,
                               color: context.colorScheme.mainThemeColor,
                               fontWeight: AppFontWeight.light,

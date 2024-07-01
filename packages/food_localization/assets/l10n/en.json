@@ -1,6 +1,10 @@
 {
   "food_hub": "Food Hub",
   "login": "Login",
+  "register_admin_txt": "Wish to start a business?",
+  "register": "Register",
+  "business_name": "Business Name",
+  "enter_business_name": "Enter business name",
   "already_have_an_account": "Already have an account?",
   "name_is_required": "Name is required",
   "email_is_required": "Email is required",

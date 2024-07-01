@@ -34,7 +34,7 @@ class LoginScreen extends StatefulWidget implements AutoRouteWrapper {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  final userModel = const UserModel();
+  final userModel = UserModel();
   final formKey = GlobalKey<FormState>();
 
   final txtEmail = TextEditingController();
@@ -48,10 +48,17 @@ class _LoginScreenState extends State<LoginScreen> {
       body: BlocConsumer<AuthBloc, AuthState>(
         listener: (context, state) {
           if (state.loginStatus == FirebaseStatus.loaded) {
-            context.router.pushAndPopUntil(
-              const UserHomeRoute(),
-              predicate: (Route<dynamic> route) => false,
-            );
+            if (state.isAdmin) {
+              context.router.pushAndPopUntil(
+                const AdminHomeRoute(),
+                predicate: (Route<dynamic> route) => false,
+              );
+            } else {
+              context.router.pushAndPopUntil(
+                const UserHomeRoute(),
+                predicate: (Route<dynamic> route) => false,
+              );
+            }
           } else if (state.loginStatus == FirebaseStatus.error) {
             ScaffoldMessenger.of(context).showSnackBar(
               customSnackBar(

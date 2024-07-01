@@ -14,3 +14,9 @@ class SignUpEvent extends AuthEvent {
 
   final UserModel userModel;
 }
+
+class AddUserToFBEvent extends AuthEvent {
+  AddUserToFBEvent({required this.userModel});
+
+  final UserModel userModel;
+}

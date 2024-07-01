@@ -16,6 +16,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         super(const AuthState()) {
     on<SignUpEvent>(signUpRequest);
     on<LogInEvent>(logInRequest);
+    on<AddUserToFBEvent>(addDetailsRequest);
   }
 
   final IAuthService _authService;
@@ -38,11 +39,25 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       },
       (r) {
         if (r) {
-          emit(
-            state.copyWith(
-              signupStatus: FirebaseStatus.loaded,
-            ),
-          );
+          if (event.userModel.isAdmin ?? false) {
+            add(
+              AddUserToFBEvent(
+                userModel: event.userModel.copyWith(password: ''),
+              ),
+            );
+            emit(
+              state.copyWith(
+                signupStatus: FirebaseStatus.loaded,
+              ),
+            );
+          } else {
+            add(AddUserToFBEvent(userModel: event.userModel.copyWith(password: '')));
+            emit(
+              state.copyWith(
+                signupStatus: FirebaseStatus.loaded,
+              ),
+            );
+          }
         }
       },
     );
@@ -57,6 +72,36 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     );
     final response = await _authService.login(userModel: event.userModel).run();
 
+    response.fold(
+      (l) {
+        emit(
+          state.copyWith(
+            loginStatus: FirebaseStatus.error,
+            errorMessage: l.message.values.first,
+          ),
+        );
+      },
+      (r) {
+        if (r[0]) {
+          emit(
+            state.copyWith(
+              loginStatus: FirebaseStatus.loaded,
+              isAdmin: r[1],
+            ),
+          );
+        }
+      },
+    );
+    return unit;
+  }
+
+  Future<Unit> addDetailsRequest(AddUserToFBEvent event, Emitter<AuthState> emit) async {
+    emit(
+      state.copyWith(
+        loginStatus: FirebaseStatus.loading,
+      ),
+    );
+    final response = await _authService.addData(userModel: event.userModel).run();
     response.fold(
       (l) {
         emit(
